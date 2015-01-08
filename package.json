@@ -10,6 +10,7 @@
   "dependencies": {
     "jsonconfig": "~ 0.3.0",
     "formidable": "~ 1.0.14",
-    "crc": "~ 1.0.0"
+    "crc": "~ 1.0.0",
+    "mv": "~2.0.3"
   }
 }

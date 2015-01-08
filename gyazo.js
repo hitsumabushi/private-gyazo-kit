@@ -2,9 +2,11 @@ var
   http = require("http"),
   formidable = require("formidable"),
   fs = require("fs"),
+  mv = require("mv"),
   crypto = require("crypto"),
   path = require("path"),
   jsonconfig = require("jsonconfig");
+
 
 jsonconfig.load(["./gyazo.conf"], function(err){
   if (err) throw err;
@@ -48,7 +50,7 @@ server = http.createServer(function(req, res){
           var hash = md5sum.digest("hex");
           var dst_name = hash + ".png";
           var dst_path = "./image/" + dst_name;
-          fs.rename(file.path, dst_path, function(err){
+          mv(file.path, dst_path, function(err){
             if (err) {
               res.writeHead(500, {"Content-Type": "text/plain"})
               res.end("cannot write uploaded data");
